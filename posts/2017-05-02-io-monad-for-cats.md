@@ -203,7 +203,7 @@ def send(c: Channel, chunk: Array[Byte]): IO[Unit] = {
   IO async { cb =>
     c.sendBytes(chunk, new Response[Unit] {
       def onError(t: Throwable) = cb(Left(t))
-      def onSuccess(v: Unit) = cb(Right(()))
+      def onSuccess(v: Unit) = cb(Right(v))
     })
   }
 }
